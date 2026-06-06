@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://b8bfctikq04q"]
+
+[ext_resource type="Script" uid="uid://cqkr17r65nqp8" path="res://scenes/the_history.gd" id="1_bm67k"]
+[ext_resource type="PackedScene" uid="uid://47j5a68kknfa" path="res://scenes/main_select.tscn" id="2_0url8"]
+[ext_resource type="FontFile" uid="uid://copffo3ccnjyl" path="res://Fonts/english.ttf" id="3_p7uu7"]
+[ext_resource type="FontFile" uid="uid://cp7w8n5bb17d3" path="res://Fonts/arabic.ttf" id="4_4xkfn"]
+[ext_resource type="AudioStream" uid="uid://pfpu2sovf4kh" path="res://assets/dragon-studio-keyboard-typing-sound-effect-335503 (1).mp3" id="4_hxfwp"]
+[ext_resource type="Texture2D" uid="uid://dw5cylbak7h8j" path="res://assets/ChatGPT Image May 15, 2026, 03_25_03 PM.png" id="6_p7uu7"]
+[ext_resource type="Shader" uid="uid://c1u6uo0fsgk4y" path="res://scripts/lvl_prtotype_back.gdshader" id="7_hxfwp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5vbv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0.16565639, 0.16565642, 0.16565636, 0.6)
+shadow_size = 39
+
+[sub_resource type="LabelSettings" id="LabelSettings_a5vbv"]
+font_size = 50
+outline_size = 7
+outline_color = Color(1, 1, 1, 0.43137255)
+
+[sub_resource type="Gradient" id="Gradient_1pcy3"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b45c2"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n0h7r"]
+noise = SubResource("FastNoiseLite_b45c2")
+color_ramp = SubResource("Gradient_1pcy3")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5l82x"]
+shader = ExtResource("7_hxfwp")
+shader_parameter/noise_img = SubResource("NoiseTexture2D_n0h7r")
+shader_parameter/speed = 0.1
+shader_parameter/noise_scale = 0.911
+shader_parameter/alpha_intensity = 0.101
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_bm67k")
+main_menu_scene = ExtResource("2_0url8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="history_en" type="RichTextLabel" parent="."]
+offset_left = 5.0
+offset_top = 8.0
+offset_right = 1154.0
+offset_bottom = 532.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_p7uu7")
+theme_override_font_sizes/normal_font_size = 50
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="history_en"]
+stream = ExtResource("4_hxfwp")
+
+[node name="history_ar" type="RichTextLabel" parent="."]
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 1154.0
+offset_bottom = 532.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("4_4xkfn")
+theme_override_font_sizes/normal_font_size = 50
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="history_ar"]
+stream = ExtResource("4_hxfwp")
+
+[node name="Touch" type="Label" parent="."]
+visible = false
+offset_left = 448.0
+offset_top = 509.0
+offset_right = 661.0
+offset_bottom = 560.0
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+theme_override_constants/shadow_offset_x = 14
+theme_override_constants/shadow_offset_y = 14
+theme_override_fonts/font = ExtResource("3_p7uu7")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_a5vbv")
+text = "touch to continue"
+label_settings = SubResource("LabelSettings_a5vbv")
+
+[node name="Touch2" type="Label" parent="."]
+visible = false
+offset_left = 448.0
+offset_top = 509.0
+offset_right = 661.0
+offset_bottom = 560.0
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+theme_override_constants/shadow_offset_x = 14
+theme_override_constants/shadow_offset_y = 14
+theme_override_fonts/font = ExtResource("3_p7uu7")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_a5vbv")
+text = "اضغط للمتابعة"
+label_settings = SubResource("LabelSettings_a5vbv")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 326)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(577, 326)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_p7uu7")
+
+[node name="FOG8BACK" type="ColorRect" parent="."]
+z_index = -4
+material = SubResource("ShaderMaterial_5l82x")
+offset_left = -9.999939
+offset_top = -2.9999695
+offset_right = 2522.5986
+offset_bottom = 844.1448
+scale = Vector2(0.459607, 0.782629)
+mouse_filter = 2

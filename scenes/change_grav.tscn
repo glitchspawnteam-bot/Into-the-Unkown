@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://chkvdrwoivjbq"]
+
+[ext_resource type="Texture2D" uid="uid://blp8l72uggh32" path="res://assets/Dungeon Tile Set.png" id="1_ibl8c"]
+[ext_resource type="Script" uid="uid://dnlkv0ithf6pj" path="res://scripts/gr_ch.gd" id="1_vjtwb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjtwb"]
+size = Vector2(32, 7)
+
+[sub_resource type="Gradient" id="Gradient_op0jk"]
+offsets = PackedFloat32Array(0.0185185, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.156863)
+
+[node name="gr_ch" type="Area2D"]
+z_index = 1
+script = ExtResource("1_vjtwb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_vjtwb")
+
+[node name="DungeonTileSet2" type="Sprite2D" parent="."]
+position = Vector2(-2.84217e-14, 1)
+scale = Vector2(0.680851, 1)
+texture = ExtResource("1_ibl8c")
+region_enabled = true
+region_rect = Rect2(16, 160, 47, 6)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+z_index = -1
+scale = Vector2(11.2621, 1.77425)
+emitting = false
+amount = 14
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 20)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+angle_min = 2.0
+angle_max = 2.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_op0jk")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

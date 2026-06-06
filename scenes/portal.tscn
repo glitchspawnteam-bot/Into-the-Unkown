@@ -1,0 +1,510 @@
+[gd_scene load_steps=26 format=3 uid="uid://bedi53l47ixbc"]
+
+[ext_resource type="Script" uid="uid://cmun485cj605n" path="res://scripts/portal.gd" id="1_d4jfq"]
+[ext_resource type="Texture2D" uid="uid://vdcdl5v4ivtt" path="res://assets/door_closed.png" id="1_v0xau"]
+[ext_resource type="AudioStream" uid="uid://c1acj8f0m0hvp" path="res://assets/universfield-computer-mouse-click-02-383961 (1).mp3" id="3_d4jfq"]
+[ext_resource type="Script" uid="uid://bmysk5ghkvwab" path="res://scripts/portal_layer.gd" id="3_hay7w"]
+[ext_resource type="FontFile" uid="uid://copffo3ccnjyl" path="res://Fonts/english.ttf" id="4_hay7w"]
+[ext_resource type="Texture2D" uid="uid://c0vw5cv1v4725" path="res://assets/icons_set/icons_128/replay.png" id="5_33yj3"]
+[ext_resource type="FontFile" uid="uid://cp7w8n5bb17d3" path="res://Fonts/arabic.ttf" id="5_hay7w"]
+[ext_resource type="Texture2D" uid="uid://d2fel32ldrkfy" path="res://assets/icons_set/icons_128/home.png" id="6_ybu0s"]
+[ext_resource type="Texture2D" uid="uid://dt7ptq07y6avr" path="res://assets/icons_set/icons_128/thumbs_up.png" id="8_f7pif"]
+[ext_resource type="Texture2D" uid="uid://br3kyjb6scl57" path="res://assets/icons_set/icons_128/fast_forward.png" id="8_hay7w"]
+[ext_resource type="Texture2D" uid="uid://br5yk5m4e84yr" path="res://assets/icons_set/icons_128/thumbs_down.png" id="9_kjyi5"]
+[ext_resource type="Texture2D" uid="uid://deaq6dsdv18y8" path="res://assets/icons_set/icons_128/record.png" id="12_q44n4"]
+[ext_resource type="AudioStream" uid="uid://dioyow6ppwxl4" path="res://assets/freesound_community-badge-coin-win-14675.mp3" id="13_hay7w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ffj6"]
+size = Vector2(16, 24)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1irw"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_jav1h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vpjwd"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.966667),
+"transitions": PackedFloat32Array(0.366022, 1.68179, 0.406126),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.68, 0.68), Vector2(0.955, 0.955)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_044f5"]
+_data = {
+&"RESET": SubResource("Animation_jav1h"),
+&"move": SubResource("Animation_vpjwd")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_82kry"]
+bg_color = Color(0.215686, 0.215686, 0.215686, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu4yp"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.682353)
+border_color = Color(0.8, 0.8, 0.8, 0.337255)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bofre"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_color = Color(0.8, 0.8, 0.8, 0.337255)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5m7qq"]
+
+[sub_resource type="Animation" id="Animation_hay7w"]
+resource_name = "FADE"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cong:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8, 1.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("how:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.9, 2.16667),
+"transitions": PackedFloat32Array(0.164938, 4),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_33yj3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cong:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("how:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ybu0s"]
+_data = {
+&"FADE": SubResource("Animation_hay7w"),
+&"RESET": SubResource("Animation_33yj3")
+}
+
+[node name="portal" type="Area2D"]
+script = ExtResource("1_d4jfq")
+metadata/_edit_vertical_guides_ = [100.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_1ffj6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v0xau")
+
+[node name="portal_layer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("3_hay7w")
+
+[node name="ColorRect" type="ColorRect" parent="portal_layer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.15127608, 0.15127608, 0.15127608, 0.6431373)
+
+[node name="Control" type="Control" parent="portal_layer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 123.0
+offset_bottom = 66.0
+
+[node name="Panel" type="Panel" parent="portal_layer/Control"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 193.0
+offset_right = 1123.0
+offset_bottom = 474.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q1irw")
+
+[node name="Control" type="Control" parent="portal_layer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level" type="Label" parent="portal_layer/Control/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 27.0
+offset_top = 205.0
+offset_right = 265.0
+offset_bottom = 332.0
+theme_override_colors/font_color = Color(0.453232, 0.453232, 0.453232, 1)
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 100
+text = "  level1:"
+
+[node name="TOTAL" type="Label" parent="portal_layer/Control/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 266.0
+offset_top = 223.0
+offset_right = 546.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 80
+text = "TOTAL SCORE:
+"
+
+[node name="about lvl2" type="Label" parent="portal_layer/Control/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 622.0
+offset_top = 211.0
+offset_right = 891.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 80
+text = ",lvl_score:"
+
+[node name="score_total" type="Label" parent="portal_layer/Control/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 895.0
+offset_top = 211.0
+offset_right = 968.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 80
+text = "100"
+
+[node name="Record" type="Sprite2D" parent="portal_layer/Control/Control"]
+position = Vector2(1049, 267)
+texture = ExtResource("12_q44n4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="portal_layer/Control/Control/Record"]
+libraries = {
+&"": SubResource("AnimationLibrary_044f5")
+}
+autoplay = "move"
+
+[node name="score_lvl" type="Label" parent="portal_layer/Control/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 551.0
+offset_top = 223.0
+offset_right = 624.0
+offset_bottom = 325.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 80
+text = "100"
+
+[node name="PROGRESS1" type="Label" parent="portal_layer/Control/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 32.0
+offset_top = 337.0
+offset_right = 1111.0
+offset_bottom = 464.0
+theme_override_colors/font_color = Color(0.45490196, 0.45490196, 0.45490196, 1)
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 40
+text = "This is your progress inthis level, and in general.You can replay the level 
+ if you,want to complete it entirely."
+
+[node name="Control2" type="Control" parent="portal_layer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level_AR" type="Label" parent="portal_layer/Control/Control2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 885.0
+offset_top = 218.0
+offset_right = 1125.0
+offset_bottom = 302.0
+theme_override_colors/font_color = Color(0.453232, 0.453232, 0.453232, 1)
+theme_override_fonts/font = ExtResource("5_hay7w")
+theme_override_font_sizes/font_size = 60
+text = "المستوى 1:"
+
+[node name="TOTAL_AR" type="Label" parent="portal_layer/Control/Control2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 565.0
+offset_top = 223.0
+offset_right = 932.0
+offset_bottom = 325.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_hay7w")
+theme_override_font_sizes/font_size = 55
+text = "المجموع الكلي:"
+
+[node name="about lvl2_AR" type="Label" parent="portal_layer/Control/Control2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 214.0
+offset_top = 220.0
+offset_right = 642.0
+offset_bottom = 294.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_hay7w")
+theme_override_font_sizes/font_size = 55
+text = ",درجة_المستوى:"
+
+[node name="score_total_AR" type="Label" parent="portal_layer/Control/Control2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 521.0
+offset_top = 211.0
+offset_right = 594.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_fonts/font = ExtResource("5_hay7w")
+theme_override_font_sizes/font_size = 70
+text = "36"
+
+[node name="Record_AR" type="Sprite2D" parent="portal_layer/Control/Control2"]
+position = Vector2(93, 270)
+texture = ExtResource("12_q44n4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="portal_layer/Control/Control2/Record_AR"]
+libraries = {
+&"": SubResource("AnimationLibrary_044f5")
+}
+autoplay = "move"
+
+[node name="score_lvl_AR" type="Label" parent="portal_layer/Control/Control2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 157.0
+offset_top = 219.0
+offset_right = 230.0
+offset_bottom = 321.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_hay7w")
+theme_override_font_sizes/font_size = 70
+text = "36"
+
+[node name="PROGRESS2" type="Label" parent="portal_layer/Control/Control2"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 19.0
+offset_top = 337.0
+offset_right = 1098.0
+offset_bottom = 464.0
+theme_override_colors/font_color = Color(0.45490196, 0.45490196, 0.45490196, 1)
+theme_override_fonts/font = ExtResource("5_hay7w")
+theme_override_font_sizes/font_size = 40
+text = "هذا هو تقدمك في هذا المستوى، وفي لعموم. يمكنك إعادة لعب المستوى
+ إذا كنت تريد إكماله بالكامل."
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="portal_layer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = 162.0
+offset_right = 364.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="RETRY" type="Button" parent="portal_layer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_82kry")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yu4yp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bofre")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5m7qq")
+text = "Retry
+"
+icon = ExtResource("5_33yj3")
+
+[node name="LVL" type="Button" parent="portal_layer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_82kry")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yu4yp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bofre")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5m7qq")
+text = "lvl
+"
+icon = ExtResource("6_ybu0s")
+
+[node name="NEXT" type="Button" parent="portal_layer/HBoxContainer"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_82kry")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yu4yp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bofre")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5m7qq")
+text = "next
+"
+icon = ExtResource("8_hay7w")
+
+[node name="cong" type="Label" parent="portal_layer"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -431.0
+offset_top = -324.0
+offset_right = 310.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_hay7w")
+theme_override_font_sizes/font_size = 130
+text = "  congratulation :;"
+
+[node name="how" type="Node2D" parent="portal_layer"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="ThumbsUp" type="Sprite2D" parent="portal_layer/how"]
+position = Vector2(989, 75)
+texture = ExtResource("8_f7pif")
+
+[node name="ThumbsDown" type="Sprite2D" parent="portal_layer/how"]
+visible = false
+position = Vector2(964, 108)
+texture = ExtResource("9_kjyi5")
+
+[node name="click" type="AudioStreamPlayer2D" parent="portal_layer"]
+unique_name_in_owner = true
+stream = ExtResource("3_d4jfq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="portal_layer"]
+libraries = {
+&"": SubResource("AnimationLibrary_ybu0s")
+}
+autoplay = "FADE"
+
+[node name="portal_s" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("13_hay7w")
+bus = &"sfx"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="pressed" from="portal_layer/HBoxContainer/RETRY" to="portal_layer" method="_on_retry_win_pressed"]
+[connection signal="pressed" from="portal_layer/HBoxContainer/LVL" to="portal_layer" method="_on_lvl_pressed"]
+[connection signal="pressed" from="portal_layer/HBoxContainer/NEXT" to="portal_layer" method="_on_next_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cp3b5w14gsudw"]
+
+[ext_resource type="Script" uid="uid://dgdmbummmylys" path="res://scripts/dark_ball.gd" id="1_dqkg6"]
+[ext_resource type="Shader" uid="uid://d062h5s756kq7" path="res://scripts/DarkBall_Shader.gdshader" id="2_53yss"]
+[ext_resource type="Shader" uid="uid://bv8f4s7wjenac" path="res://scenes/dark_ball.gdshader" id="3_kbgjr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8qkw"]
+radius = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cbvk"]
+shader = ExtResource("2_53yss")
+shader_parameter/core_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(0.5, 0.1, 0.8, 1)
+shader_parameter/speed = 5.0
+shader_parameter/glow_intensity = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_46olb"]
+shader = ExtResource("3_kbgjr")
+shader_parameter/slime_color = Color(0.3, 0, 0.5, 1)
+shader_parameter/thickness = 0.76000003284012
+shader_parameter/speed = 10.0
+
+[node name="DarkBall" type="Area2D"]
+position = Vector2(-12, -12)
+script = ExtResource("1_dqkg6")
+speed = 220.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_u8qkw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_0cbvk")
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource("ShaderMaterial_46olb")
+position = Vector2(-1, -1)
+width = 16.0
+texture_mode = 1

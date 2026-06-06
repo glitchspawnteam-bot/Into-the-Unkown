@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkmc1yyl2ajpj"]
+
+[ext_resource type="Script" uid="uid://cdcf4828yd0rx" path="res://scenes/music.gd" id="1_qnihg"]
+[ext_resource type="AudioStream" uid="uid://31vddeaaa80f" path="res://assets/2 Fredelig Sinn Loop 3.wav" id="2_qnihg"]
+[ext_resource type="AudioStream" uid="uid://00rrmcea7l7b" path="res://assets/Mind's Eye Full.wav" id="3_ejojg"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qnihg")
+
+[node name="win" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qnihg")
+bus = &"music"
+
+[node name="normal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ejojg")
+bus = &"music"

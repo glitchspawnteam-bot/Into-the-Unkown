@@ -1,0 +1,386 @@
+[gd_scene load_steps=30 format=3 uid="uid://csfrmyiq6nuhx"]
+
+[ext_resource type="Script" uid="uid://dekifbmyou58" path="res://scripts/the_intro.gd" id="1_0nmub"]
+[ext_resource type="FontFile" uid="uid://copffo3ccnjyl" path="res://Fonts/english.ttf" id="3_r0exx"]
+[ext_resource type="FontFile" uid="uid://cp7w8n5bb17d3" path="res://Fonts/arabic.ttf" id="4_1e2d7"]
+[ext_resource type="AudioStream" uid="uid://pfpu2sovf4kh" path="res://assets/dragon-studio-keyboard-typing-sound-effect-335503 (1).mp3" id="4_2h76g"]
+[ext_resource type="Texture2D" uid="uid://dw5cylbak7h8j" path="res://assets/ChatGPT Image May 15, 2026, 03_25_03 PM.png" id="5_1e2d7"]
+[ext_resource type="Shader" uid="uid://c1u6uo0fsgk4y" path="res://scripts/lvl_prtotype_back.gdshader" id="6_r0exx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p310k"]
+draw_center = false
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 19
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5vbv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0.16565639, 0.16565642, 0.16565636, 0.6)
+shadow_size = 39
+
+[sub_resource type="LabelSettings" id="LabelSettings_a5vbv"]
+font_size = 50
+outline_size = 7
+outline_color = Color(1, 1, 1, 0.43137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nmub"]
+bg_color = Color(0.09803922, 0.09803922, 0.09803922, 0.52156866)
+corner_radius_top_left = 90
+corner_radius_top_right = 90
+corner_radius_bottom_right = 90
+corner_radius_bottom_left = 90
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1e2d7"]
+bg_color = Color(0.1882353, 0.1882353, 0.1882353, 0.5803922)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjc20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gepvx"]
+bg_color = Color(0.34781694, 0.34781697, 0.34781682, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcl3n"]
+bg_color = Color(0.3515629, 0.3515629, 0.35156283, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpsds"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27taa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4iwk2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfrya"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_2h76g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r0exx"]
+resource_name = "sh"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6hi0"]
+_data = {
+&"RESET": SubResource("Animation_2h76g"),
+&"sh": SubResource("Animation_r0exx")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0exx"]
+bg_color = Color(0.109804, 0.109804, 0.117647, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2h76g"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.682353)
+border_color = Color(0.8, 0.8, 0.8, 0.337255)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6hi0"]
+bg_color = Color(0.227451, 0.227451, 0.25098, 1)
+border_color = Color(0.8, 0.8, 0.8, 0.337255)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wfrya"]
+
+[sub_resource type="Gradient" id="Gradient_2h76g"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j6hi0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ybvm4"]
+noise = SubResource("FastNoiseLite_j6hi0")
+color_ramp = SubResource("Gradient_2h76g")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfrya"]
+shader = ExtResource("6_r0exx")
+shader_parameter/noise_img = SubResource("NoiseTexture2D_ybvm4")
+shader_parameter/speed = 0.1
+shader_parameter/noise_scale = 0.911
+shader_parameter/alpha_intensity = 0.101
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0nmub")
+title_speed = 0.2
+paragraph_speed = 0.1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Title" type="RichTextLabel" parent="."]
+offset_left = 269.0
+offset_top = 40.0
+offset_right = 888.0
+offset_bottom = 206.0
+size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("3_r0exx")
+theme_override_font_sizes/normal_font_size = 120
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Title"]
+stream = ExtResource("4_2h76g")
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 0
+offset_right = 699.0
+offset_bottom = 185.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_p310k")
+
+[node name="Pargraphe" type="RichTextLabel" parent="."]
+offset_left = 7.0
+offset_top = 295.0
+offset_right = 1154.0
+offset_bottom = 532.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_r0exx")
+theme_override_font_sizes/normal_font_size = 50
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Pargraphe"]
+stream = ExtResource("4_2h76g")
+
+[node name="Touch" type="Label" parent="."]
+visible = false
+offset_left = 448.0
+offset_top = 509.0
+offset_right = 661.0
+offset_bottom = 560.0
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+theme_override_constants/shadow_offset_x = 14
+theme_override_constants/shadow_offset_y = 14
+theme_override_fonts/font = ExtResource("3_r0exx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_a5vbv")
+text = "touch to continue"
+label_settings = SubResource("LabelSettings_a5vbv")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 326)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 307.0
+offset_top = 97.0
+offset_right = 853.0
+offset_bottom = 571.0
+focus_mode = 1
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nmub")
+
+[node name="Arabic" type="Button" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 157.0
+offset_right = 252.0
+offset_bottom = 221.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_r0exx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_1e2d7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_jjc20")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gepvx")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_jcl3n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qpsds")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_27taa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4iwk2")
+text = "Arabic"
+
+[node name="English" type="Button" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 156.0
+offset_right = 443.0
+offset_bottom = 220.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_r0exx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_1e2d7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_jjc20")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gepvx")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_jcl3n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qpsds")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_27taa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4iwk2")
+text = "English
+"
+
+[node name="save" type="Button" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 439.0
+offset_right = 338.0
+offset_bottom = 503.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_r0exx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_1e2d7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_jjc20")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gepvx")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_jcl3n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qpsds")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_27taa")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4iwk2")
+text = "save"
+
+[node name="Label" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = -1.0
+offset_right = 404.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("3_r0exx")
+theme_override_font_sizes/font_size = 50
+text = "YOur information:"
+horizontal_alignment = 1
+
+[node name="language" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 76.0
+offset_right = 305.0
+offset_bottom = 140.0
+theme_override_fonts/font = ExtResource("3_r0exx")
+theme_override_font_sizes/font_size = 50
+text = "choose you language:"
+horizontal_alignment = 1
+
+[node name="name" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 244.0
+offset_right = 327.0
+offset_bottom = 308.0
+theme_override_fonts/font = ExtResource("3_r0exx")
+theme_override_font_sizes/font_size = 50
+text = "write you really name:"
+horizontal_alignment = 1
+
+[node name="eror" type="Label" parent="CanvasLayer2/Panel"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 388.0
+offset_right = 312.0
+offset_bottom = 421.0
+theme_override_fonts/font = ExtResource("3_r0exx")
+theme_override_font_sizes/font_size = 25
+text = "Please write your name or choos language!"
+horizontal_alignment = 1
+
+[node name="name_realy" type="LineEdit" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 344.0
+offset_right = 359.0
+offset_bottom = 387.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_wfrya")
+max_length = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2"]
+libraries = {
+&"": SubResource("AnimationLibrary_j6hi0")
+}
+
+[node name="next" type="Button" parent="."]
+process_mode = 3
+visible = false
+offset_left = 1014.0
+offset_top = 577.0
+offset_right = 1184.0
+offset_bottom = 665.0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_r0exx")
+theme_override_font_sizes/font_size = 69
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0exx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2h76g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j6hi0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wfrya")
+text = "next"
+
+[node name="next_ar" type="Button" parent="."]
+process_mode = 3
+visible = false
+offset_left = 1012.0
+offset_top = 575.0
+offset_right = 1182.0
+offset_bottom = 663.0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_1e2d7")
+theme_override_font_sizes/font_size = 57
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0exx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2h76g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j6hi0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wfrya")
+text = "التالي"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(577, 326)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_1e2d7")
+
+[node name="FOG8BACK" type="ColorRect" parent="."]
+z_index = -4
+material = SubResource("ShaderMaterial_wfrya")
+offset_left = -10.0
+offset_top = -3.0
+offset_right = 2522.5986
+offset_bottom = 844.1447
+scale = Vector2(0.459607, 0.782629)
+mouse_filter = 2
+
+[connection signal="pressed" from="CanvasLayer2/Panel/Arabic" to="." method="_on_arabic_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Panel/English" to="." method="_on_english_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Panel/save" to="." method="_on_save_pressed"]
+[connection signal="focus_entered" from="CanvasLayer2/Panel/name_realy" to="." method="_on_name_realy_focus_entered"]
+[connection signal="focus_exited" from="CanvasLayer2/Panel/name_realy" to="." method="_on_name_realy_focus_exited"]
+[connection signal="text_changed" from="CanvasLayer2/Panel/name_realy" to="." method="_on_name_realy_text_changed"]
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="next_ar" to="." method="_on_next_pressed"]

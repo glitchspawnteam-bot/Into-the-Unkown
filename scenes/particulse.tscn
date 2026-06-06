@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvcu8vln05hgw"]
+
+[ext_resource type="Script" uid="uid://bwynda5sp0l7f" path="res://scripts/particulse.gd" id="1_jju3v"]
+[ext_resource type="Texture2D" uid="uid://blp8l72uggh32" path="res://assets/Dungeon Tile Set.png" id="2_b0hhx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub2xj"]
+size = Vector2(26, 2.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jju3v"]
+size = Vector2(30, 9)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["gravity"]]
+z_index = 1
+script = ExtResource("1_jju3v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_b0hhx")
+region_enabled = true
+region_rect = Rect2(16, 231, 27, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.25)
+shape = SubResource("RectangleShape2D_ub2xj")
+
+[node name="die_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="die_zone"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_jju3v")
+
+[connection signal="body_entered" from="die_zone" to="." method="_on_die_zone_body_entered"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1jxk1f5dcuyk"]
+
+[ext_resource type="Script" uid="uid://cufrbh5d3b545" path="res://scripts/button.gd" id="1_mi6dp"]
+[ext_resource type="FontFile" uid="uid://copffo3ccnjyl" path="res://Fonts/english.ttf" id="1_rhj8v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4pas"]
+bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi6dp"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 0.682353)
+border_color = Color(0.8, 0.8, 0.8, 0.337255)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhj8v"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_color = Color(0.8, 0.8, 0.8, 0.337255)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.203922)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3q610"]
+
+[node name="Button" type="Button"]
+offset_right = 66.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("1_rhj8v")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_n4pas")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mi6dp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhj8v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3q610")
+text = "1"
+script = ExtResource("1_mi6dp")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

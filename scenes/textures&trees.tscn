@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs3jt8mg6loe5"]
+
+[ext_resource type="Shader" uid="uid://yfi5qfjtjtus" path="res://scripts/lvl_prototype_tress.gdshader" id="1_o2k6b"]
+[ext_resource type="Texture2D" uid="uid://cugvtqiookld" path="res://assets/Textures&trees.png" id="2_djlnl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2k6b"]
+shader = ExtResource("1_o2k6b")
+shader_parameter/speed = 0.5
+shader_parameter/min_strength = 0.05
+shader_parameter/max_strength = 0.2
+
+[node name="Textures&trees" type="Sprite2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_o2k6b")
+texture = ExtResource("2_djlnl")
+region_enabled = true
+region_rect = Rect2(14, 72, 243, 25)

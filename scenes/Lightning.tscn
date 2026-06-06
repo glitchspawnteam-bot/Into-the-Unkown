@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://3rcxcb0j28ly"]
+
+[ext_resource type="Script" uid="uid://en2hngpramav" path="res://scripts/Lightning.gd" id="1_itso6"]
+
+[node name="Line2D" type="Line2D"]
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_itso6")
+flash_color = Color(0.07473559, 0.013825543, 0.10272234, 1)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc76m08xflg2v"]
+
+[ext_resource type="Texture2D" uid="uid://blp8l72uggh32" path="res://assets/Dungeon Tile Set.png" id="1_3inec"]
+[ext_resource type="Script" uid="uid://dq78pnn3to7s0" path="res://scripts/box.gd" id="1_ks2v0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ks2v0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ks2v0"]
+size = Vector2(24, 24)
+
+[node name="box" type="RigidBody2D" groups=["box", "gravity"]]
+collision_layer = 3
+collision_mask = 3
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_ks2v0")
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+script = ExtResource("1_ks2v0")
+
+[node name="DungeonTileSet" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_3inec")
+region_enabled = true
+region_rect = Rect2(160, 160, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ks2v0")
