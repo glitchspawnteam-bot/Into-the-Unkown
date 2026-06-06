@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://pfpu2sovf4kh"
+path="res://.godot/imported/dragon-studio-keyboard-typing-sound-effect-335503 (1).mp3-04a752ca5a7aefee6c5fd125ba4ee63f.mp3str"
+
+[deps]
+
+source_file="res://assets/dragon-studio-keyboard-typing-sound-effect-335503 (1).mp3"
+dest_files=["res://.godot/imported/dragon-studio-keyboard-typing-sound-effect-335503 (1).mp3-04a752ca5a7aefee6c5fd125ba4ee63f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

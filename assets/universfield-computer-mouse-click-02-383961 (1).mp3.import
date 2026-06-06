@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1acj8f0m0hvp"
+path="res://.godot/imported/universfield-computer-mouse-click-02-383961 (1).mp3-c5ce4a26d85265f293ec6b3c1a728e81.mp3str"
+
+[deps]
+
+source_file="res://assets/universfield-computer-mouse-click-02-383961 (1).mp3"
+dest_files=["res://.godot/imported/universfield-computer-mouse-click-02-383961 (1).mp3-c5ce4a26d85265f293ec6b3c1a728e81.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
